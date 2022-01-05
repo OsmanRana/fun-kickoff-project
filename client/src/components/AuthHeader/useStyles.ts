@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     filter: 'drop-shadow(0px 2px 6px rgba(74,106,149,0.2))',
     backgroundColor: '#ffffff',
     color: '#3a8dff',
-    boxShadow: 'none',
+    boxShadow: '0px 2px 15px rgba(74,106,149,0.2)',
+    textTransform: 'none',
   },
 }));
 
