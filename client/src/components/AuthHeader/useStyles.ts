@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#ffffff',
     color: '#3a8dff',
     boxShadow: '0px 2px 15px rgba(74,106,149,0.2)',
-    textTransform: 'none',
   },
 }));
 
