@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    minHeight: '100vh',
+    maxHeight: '100vh',
     paddingTop: 23,
   },
   welcome: {

@@ -8,10 +8,15 @@ const useStyles = makeStyles(() => ({
     },
   },
   authWrapper: {
-    minHeight: '100vh',
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    maxHeight: '100vh',
     paddingTop: 23,
   },
   welcome: {
+    textAlign: 'center',
     fontSize: 26,
     paddingBottom: 20,
     color: '#000000',
