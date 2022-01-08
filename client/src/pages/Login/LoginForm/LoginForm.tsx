@@ -6,6 +6,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import useStyles from './useStyles';
+import InputLabel from '@mui/material/InputLabel';
+import AuthFooter from '../../../components/AuthFooter/AuthFooter';
 
 interface Props {
   handleSubmit: (
@@ -46,50 +48,66 @@ export default function Login({ handleSubmit }: Props): JSX.Element {
     >
       {({ handleSubmit, handleChange, values, touched, errors, isSubmitting }) => (
         <form onSubmit={handleSubmit} className={classes.form} noValidate>
-          <TextField
-            id="email"
-            label={<Typography className={classes.label}>E-mail address</Typography>}
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            InputProps={{
-              classes: { input: classes.inputs },
-            }}
-            name="email"
-            autoComplete="email"
-            autoFocus
-            helperText={touched.email ? errors.email : ''}
-            error={touched.email && Boolean(errors.email)}
-            value={values.email}
-            onChange={handleChange}
-          />
-          <TextField
-            id="password"
-            label={<Typography className={classes.label}>Password</Typography>}
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            InputProps={{
-              classes: { input: classes.inputs },
-              endAdornment: <Typography className={classes.forgot}>Forgot?</Typography>,
-            }}
-            type="password"
-            autoComplete="current-password"
-            helperText={touched.password ? errors.password : ''}
-            error={touched.password && Boolean(errors.password)}
-            value={values.password}
-            onChange={handleChange}
-          />
-          <Box textAlign="center" marginTop={5}>
-            <Button type="submit" size="large" variant="contained" color="primary" className={classes.submit}>
+          <Box width={1}>
+            <InputLabel className={classes.inputLabel}>
+              <Typography className={classes.label} variant="caption" display="inline" sx={{ fontWeight: 'bold' }}>
+                EMAIL ADDRESS
+              </Typography>
+            </InputLabel>
+            <TextField
+              id="email"
+              fullWidth
+              margin="dense"
+              variant="outlined"
+              placeholder="Your email"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              InputProps={{
+                classes: { input: classes.inputs },
+              }}
+              name="email"
+              autoComplete="email"
+              autoFocus
+              helperText={touched.email ? errors.email : ''}
+              error={touched.email && Boolean(errors.email)}
+              value={values.email}
+              onChange={handleChange}
+            />
+            <InputLabel className={classes.inputLabel}>
+              <Typography className={classes.label} variant="caption" display="inline" sx={{ fontWeight: 'bold' }}>
+                PASSWORD
+              </Typography>
+            </InputLabel>
+            <TextField
+              id="password"
+              fullWidth
+              margin="dense"
+              variant="outlined"
+              placeholder="Your password"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              InputProps={{
+                classes: { input: classes.inputs },
+                endAdornment: <Typography className={classes.forgot}>Forgot?</Typography>,
+              }}
+              type="password"
+              autoComplete="current-password"
+              helperText={touched.password ? errors.password : ''}
+              error={touched.password && Boolean(errors.password)}
+              value={values.password}
+              onChange={handleChange}
+            />
+          </Box>
+          <Box textAlign="center" marginTop={5} className={classes.submit}>
+            <Button type="submit" size="large" style={{ color: 'white' }}>
               {isSubmitting ? <CircularProgress style={{ color: 'white' }} /> : 'Login'}
             </Button>
           </Box>
-          <Box height={95} />
+          <Box>
+            <AuthFooter linkTo="/signup" asideText="Not a member?" btnText="Sign Up" />
+          </Box>
         </form>
       )}
     </Formik>
