@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
@@ -14,18 +13,13 @@ const AuthFooter = ({ linkTo, asideText, btnText }: Props): JSX.Element => {
   const classes = useStyles();
 
   return (
-    <Box
-      p={1}
-      display="flex"
-      justifyContent="flex-end"
-      alignSelf="flex-end"
-      marginRight={5}
-      className={classes.authHeader}
-    >
-      <Typography className={classes.accAside}>{asideText}</Typography>
-      <Button component={Link} to={linkTo} color="inherit" className={classes.accBtn} variant="text">
+    <Box p={1} display="flex" justifyContent="flex-end" alignSelf="flex-end" className={classes.authFooter}>
+      <Typography className={classes.accAside} sx={{ fontWeight: 'bold' }}>
+        {asideText}
+      </Typography>
+      <Link to={linkTo} className={classes.linkText}>
         {btnText}
-      </Button>
+      </Link>
     </Box>
   );
 };
