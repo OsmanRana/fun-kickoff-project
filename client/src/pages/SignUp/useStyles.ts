@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
     fontSize: 26,
     paddingBottom: 20,
     color: '#000000',
-    fontWeight: 900,
+    fontWeight: 700,
   },
 }));
 

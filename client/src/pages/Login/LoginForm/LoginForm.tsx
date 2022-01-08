@@ -51,7 +51,6 @@ export default function Login({ handleSubmit }: Props): JSX.Element {
             label={<Typography className={classes.label}>E-mail address</Typography>}
             fullWidth
             margin="normal"
-            variant="standard"
             InputLabelProps={{
               shrink: true,
             }}
@@ -71,7 +70,6 @@ export default function Login({ handleSubmit }: Props): JSX.Element {
             label={<Typography className={classes.label}>Password</Typography>}
             fullWidth
             margin="normal"
-            variant="standard"
             InputLabelProps={{
               shrink: true,
             }}
@@ -87,14 +85,7 @@ export default function Login({ handleSubmit }: Props): JSX.Element {
             onChange={handleChange}
           />
           <Box textAlign="center" marginTop={5}>
-            <Button
-              type="submit"
-              size="large"
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              sx={{ textTransform: 'none' }}
-            >
+            <Button type="submit" size="large" variant="contained" color="primary" className={classes.submit}>
               {isSubmitting ? <CircularProgress style={{ color: 'white' }} /> : 'Login'}
             </Button>
           </Box>
