@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: 'rgb(0,0,0,1)',
   },
   inputs: {
-    marginTop: '.8rem',
+    margin: '.8rem',
     height: '2rem',
     padding: '5px',
   },
