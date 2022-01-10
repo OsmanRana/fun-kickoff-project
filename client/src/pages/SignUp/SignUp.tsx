@@ -8,6 +8,7 @@ import register from '../../helpers/APICalls/register';
 import SignUpForm from './SignUpForm/SignUpForm';
 import { useAuth } from '../../context/useAuthContext';
 import { useSnackBar } from '../../context/useSnackbarContext';
+import LoggedInNavbar from '../../components/Navbar/LoggedInNavbar/LoggedInNavbar';
 
 export default function Register(): JSX.Element {
   const classes = useStyles();
@@ -36,28 +37,31 @@ export default function Register(): JSX.Element {
   };
 
   return (
-    <Grid container component="main" className={classes.root} alignItems="center" justifyContent="center">
-      <Grid item xs={12} sm={8} md={6} elevation={6} component={Paper}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          className={classes.authWrapper}
-        >
-          <Box width="100%" maxWidth={450} p={3} alignSelf="center">
-            <Grid container>
-              <Grid item xs>
-                <Typography className={classes.welcome} component="h1" variant="h4" sx={{ fontWeight: 'bold' }}>
-                  Sign Up
-                </Typography>
+    <>
+      <LoggedInNavbar />
+      <Grid container component="main" className={classes.root} alignItems="center" justifyContent="center">
+        <Grid item xs={12} sm={8} md={6} elevation={6} component={Paper}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+            className={classes.authWrapper}
+          >
+            <Box width="100%" maxWidth={450} p={3} alignSelf="center">
+              <Grid container>
+                <Grid item xs>
+                  <Typography className={classes.welcome} component="h1" variant="h4" sx={{ fontWeight: 'bold' }}>
+                    Sign Up
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-            <SignUpForm handleSubmit={handleSubmit} />
+              <SignUpForm handleSubmit={handleSubmit} />
+            </Box>
+            <Box p={1} alignSelf="center" />
           </Box>
-          <Box p={1} alignSelf="center" />
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 }

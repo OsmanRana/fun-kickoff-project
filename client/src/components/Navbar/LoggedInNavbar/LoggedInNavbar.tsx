@@ -11,12 +11,12 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { ListItemIcon, ListItemText, Divider } from '@mui/material';
-import { Person as ProfileIcon, Logout as LogoutIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import { Person as ProfileIcon, Logout as LogoutIcon } from '@mui/icons-material';
 import { useAuth } from '../../../context/useAuthContext';
 
 const pages = ['My Jobs', 'Massages'];
 
-const LoggedInNavbar = () => {
+const LoggedInNavbar: React.FC = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -51,106 +51,105 @@ const LoggedInNavbar = () => {
           <Box sx={{ mr: 2, my: 3, display: { xs: 'none', md: 'flex' } }}>
             <img src="./logo.png" alt="Logo" />
           </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="primary"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ color: 'primary' }} textAlign="center">
+          {loggedInUser ? (
+            <>
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  color="primary"
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                  }}
+                >
+                  {pages.map((page) => (
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography sx={{ color: 'primary' }} textAlign="center">
+                        {page}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+              <Box sx={{ mr: 2, my: 3, flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <img src="./logo.png" alt="Logo" />
+              </Box>
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'right' } }}>
+                {pages.map((page) => (
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, mr: 8, color: 'text.primary', display: 'block', textTransform: 'none' }}
+                  >
                     {page}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Box sx={{ mr: 2, my: 3, flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <img src="./logo.png" alt="Logo" />
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'right' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, mr: 8, color: 'text.primary', display: 'block', textTransform: 'none' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+                  </Button>
+                ))}
+              </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
-                />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem onClick={handleClose}>
-                <ListItemIcon>
-                  <SettingsIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>Settings</ListItemText>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <ListItemIcon>
-                  <ProfileIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>Profile</ListItemText>
-              </MenuItem>
-              <Divider />
-              <MenuItem onClick={handleLogout}>
-                <ListItemIcon>
-                  <LogoutIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>Logout</ListItemText>
-              </MenuItem>
-            </Menu>
-          </Box>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <ListItemIcon>
+                      <ProfileIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Go to Profile</ListItemText>
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem onClick={handleLogout}>
+                    <ListItemIcon>
+                      <LogoutIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Logout</ListItemText>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            </>
+          ) : (
+            'null'
+          )}
         </Toolbar>
       </Box>
     </AppBar>
