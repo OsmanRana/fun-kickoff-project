@@ -64,6 +64,7 @@ const AuthFooter = ({ linkTo, asideText, btnText, variantName }: Props): JSX.Ele
                 backgroundColor: 'white',
                 border: '1px solid #f14140',
                 color: '#f14140',
+                boxShadow: 'none',
               },
             }}
           >
