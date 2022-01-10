@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: 56,
     borderRadius: theme.shape.borderRadius,
     fontSize: 16,
-    backgroundColor: '#f14140',
     fontWeight: 'bold',
   },
 }));
