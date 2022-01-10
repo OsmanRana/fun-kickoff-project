@@ -100,9 +100,22 @@ export default function Login({ handleSubmit }: Props): JSX.Element {
               onChange={handleChange}
             />
           </Box>
-          <Box textAlign="center" marginTop={5} className={classes.submit}>
-            <Button type="submit" size="large" style={{ color: 'white' }}>
-              {isSubmitting ? <CircularProgress style={{ color: 'white' }} /> : 'Login'}
+          <Box textAlign="center" marginTop={5}>
+            <Button
+              type="submit"
+              size="large"
+              className={classes.submit}
+              sx={{
+                backgroundColor: '#f14140',
+                color: 'white',
+                '&:hover': {
+                  backgroundColor: 'white',
+                  color: '#f14140',
+                  border: '1px solid #f14140',
+                },
+              }}
+            >
+              {isSubmitting ? <CircularProgress style={{ color: '#f14140' }} /> : 'Login'}
             </Button>
           </Box>
           <Box>
