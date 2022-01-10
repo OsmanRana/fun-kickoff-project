@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { ListItemIcon, ListItemText, Divider } from '@mui/material';
 import { Person as ProfileIcon, Logout as LogoutIcon } from '@mui/icons-material';
 import { useAuth } from '../../../context/useAuthContext';
+import AuthHeader from '../../../components/AuthHeader/AuthHeader';
 
 const pages = ['My Jobs', 'Massages'];
 
@@ -194,13 +195,8 @@ const LoggedInNavbar: React.FC = () => {
               <Box
                 sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'right', alignItems: 'center' } }}
               >
-                <Typography sx={{ my: 2, mr: 8, color: 'text.primary', display: 'block' }}>BECOME A SITTER</Typography>
-                <Button onClick={handleCloseNavMenu} sx={{ my: 2, mr: 8, color: 'text.primary', display: 'block' }}>
-                  Login
-                </Button>
-                <Button onClick={handleCloseNavMenu} sx={{ my: 2, mr: 8, color: 'text.primary', display: 'block' }}>
-                  Sign Up
-                </Button>
+                <AuthHeader linkTo="/login" asideText="BECOME A SITTER" btnText="Login" variantName="text" />
+                <AuthHeader linkTo="/signup" asideText="" btnText="Sign Up" variantName="contained" />
               </Box>
             </>
           )}
