@@ -5,14 +5,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  inputLabel: {
+    marginTop: '15px',
+    marginBottom: '-8px',
   },
   label: {
-    fontSize: 19,
-    color: 'rgb(0,0,0,0.4)',
-    paddingLeft: '5px',
+    color: 'rgb(0,0,0,1)',
   },
   inputs: {
-    marginTop: '.8rem',
+    margin: '.8rem',
     height: '2rem',
     padding: '5px',
   },
@@ -21,14 +26,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: '#3a8dff',
   },
   submit: {
-    margin: theme.spacing(3, 2, 2),
     padding: 10,
     width: 160,
     height: 56,
     borderRadius: theme.shape.borderRadius,
-    marginTop: 49,
     fontSize: 16,
-    backgroundColor: '#3a8dff',
     fontWeight: 'bold',
   },
 }));

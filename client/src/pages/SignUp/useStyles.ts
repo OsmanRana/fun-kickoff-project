@@ -12,10 +12,11 @@ const useStyles = makeStyles(() => ({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    minHeight: '100vh',
+    maxHeight: '100vh',
     paddingTop: 23,
   },
   welcome: {
+    textAlign: 'center',
     fontSize: 26,
     paddingBottom: 20,
     color: '#000000',
