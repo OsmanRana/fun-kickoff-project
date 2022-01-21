@@ -6,9 +6,9 @@ import { FormikHelpers } from 'formik';
 import useStyles from './useStyles';
 import login from '../../helpers/APICalls/login';
 import LoginForm from './LoginForm/LoginForm';
-import AuthHeader from '../../components/AuthHeader/AuthHeader';
 import { useAuth } from '../../context/useAuthContext';
 import { useSnackBar } from '../../context/useSnackbarContext';
+import LoggedInNavbar from '../../components/Navbar/LoggedInNavbar/LoggedInNavbar';
 
 export default function Login(): JSX.Element {
   const classes = useStyles();
@@ -36,28 +36,31 @@ export default function Login(): JSX.Element {
   };
 
   return (
-    <Grid container component="main" className={classes.root} alignItems="center" justifyContent="center">
-      <Grid item xs={12} sm={8} md={6} elevation={6} component={Paper}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          className={classes.authWrapper}
-        >
-          <Box width="100%" maxWidth={450} p={3} alignSelf="center">
-            <Grid container>
-              <Grid item xs>
-                <Typography className={classes.welcome} component="h1" variant="h5" sx={{ fontWeight: 'bold' }}>
-                  Welcome back!
-                </Typography>
+    <>
+      <LoggedInNavbar />
+      <Grid container component="main" className={classes.root} alignItems="center" justifyContent="center">
+        <Grid item xs={12} sm={8} md={6} elevation={6} component={Paper}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+            className={classes.authWrapper}
+          >
+            <Box width="100%" maxWidth={450} p={3} alignSelf="center">
+              <Grid container>
+                <Grid item xs>
+                  <Typography className={classes.welcome} component="h1" variant="h5" sx={{ fontWeight: 'bold' }}>
+                    Welcome back!
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-            <LoginForm handleSubmit={handleSubmit} />
+              <LoginForm handleSubmit={handleSubmit} />
+            </Box>
+            <Box p={1} alignSelf="center" />
           </Box>
-          <Box p={1} alignSelf="center" />
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 }

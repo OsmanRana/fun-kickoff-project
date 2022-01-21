@@ -8,11 +8,14 @@ interface Props {
   linkTo: string;
   asideText: string;
   btnText: string;
+  variantName: any;
 }
 
-const AuthFooter = ({ linkTo, asideText, btnText }: Props): JSX.Element => {
+const AuthFooter = ({ linkTo, asideText, btnText, variantName }: Props): JSX.Element => {
   const classes = useStyles();
-
+  if (variantName === 'outlined') {
+    console.log('Okay');
+  }
   return (
     <Box
       p={1}
@@ -22,10 +25,53 @@ const AuthFooter = ({ linkTo, asideText, btnText }: Props): JSX.Element => {
       marginRight={5}
       className={classes.authHeader}
     >
-      <Typography className={classes.accAside}>{asideText}</Typography>
-      <Button component={Link} to={linkTo} color="inherit" className={classes.accBtn} variant="text">
-        {btnText}
-      </Button>
+      <Box>
+        <Typography className={classes.accAside} sx={{ fontWeight: 'bold' }}>
+          {asideText}
+        </Typography>
+      </Box>
+      <Box>
+        {variantName === 'text' && (
+          <Button
+            component={Link}
+            to={linkTo}
+            className={classes.accBtn}
+            variant={variantName}
+            sx={{
+              border: '1px solid #f14140',
+              color: '#f14140',
+              '&:hover': {
+                backgroundColor: '#f14140',
+                border: '1px solid #f14140',
+                color: 'white',
+              },
+            }}
+          >
+            {btnText}
+          </Button>
+        )}
+        {variantName === 'contained' && (
+          <Button
+            component={Link}
+            to={linkTo}
+            className={classes.accBtn}
+            variant={variantName}
+            sx={{
+              backgroundColor: '#f14140',
+              border: '1px solid #f14140',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: 'white',
+                border: '1px solid #f14140',
+                color: '#f14140',
+                boxShadow: 'none',
+              },
+            }}
+          >
+            {btnText}
+          </Button>
+        )}
+      </Box>
     </Box>
   );
 };
